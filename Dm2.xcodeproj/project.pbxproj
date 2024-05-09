@@ -53,6 +53,9 @@
 		54FF2C5E2BEAB75B00786E2B /* Dm2 */ = {
 			isa = PBXGroup;
 			children = (
+				54FF2C702BED719900786E2B /* ViewModels */,
+				54FF2C6F2BED719000786E2B /* Models */,
+				54FF2C6E2BED718500786E2B /* Views */,
 				54FF2C5F2BEAB75B00786E2B /* Dm2App.swift */,
 				54FF2C612BEAB75B00786E2B /* ContentView.swift */,
 				54FF2C632BEAB75D00786E2B /* Assets.xcassets */,
@@ -67,6 +70,27 @@
 				54FF2C662BEAB75D00786E2B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54FF2C6E2BED718500786E2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		54FF2C6F2BED719000786E2B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		54FF2C702BED719900786E2B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
