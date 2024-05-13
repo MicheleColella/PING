@@ -20,13 +20,13 @@ struct PathFindView: View {
                 Spacer()
 
                 Text("direzione")
-                    .font(.title)
+                    .font(.custom("AgrandirVariable_Bold", size: 25.6))
                     .foregroundColor(.white)
                     .blendMode(.difference)
                     .accessibility(hidden: true)
                 
                 Text(viewModel.destinationName)
-                    .font(.system(size: 60))
+                    .font(.custom("AgrandirVariable_Bold", size: 60))
                     .foregroundColor(.white)
                     .blendMode(.difference)
                     .accessibility(hidden: true)

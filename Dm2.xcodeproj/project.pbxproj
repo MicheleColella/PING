@@ -15,6 +15,7 @@
 		8B7A13772BF29D20000CC4B8 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13762BF29D20000CC4B8 /* Path.swift */; };
 		8B7A13792BF29D5C000CC4B8 /* PathRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13782BF29D5C000CC4B8 /* PathRepository.swift */; };
 		8B7A137B2BF29D7A000CC4B8 /* PathFindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A137A2BF29D7A000CC4B8 /* PathFindView.swift */; };
+		8B7A13812BF2A156000CC4B8 /* Agrandir_Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A13802BF2A156000CC4B8 /* Agrandir_Variable.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		8B7A13762BF29D20000CC4B8 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		8B7A13782BF29D5C000CC4B8 /* PathRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRepository.swift; sourceTree = "<group>"; };
 		8B7A137A2BF29D7A000CC4B8 /* PathFindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFindView.swift; sourceTree = "<group>"; };
+		8B7A13802BF2A156000CC4B8 /* Agrandir_Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Agrandir_Variable.ttf; sourceTree = "<group>"; };
+		8B7A13822BF2A1A0000CC4B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		54FF2C5E2BEAB75B00786E2B /* Dm2 */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A13822BF2A1A0000CC4B8 /* Info.plist */,
+				8B7A137F2BF2A140000CC4B8 /* Fonts */,
 				54FF2C702BED719900786E2B /* ViewModels */,
 				54FF2C6F2BED719000786E2B /* Models */,
 				54FF2C6E2BED718500786E2B /* Views */,
@@ -103,6 +108,14 @@
 				8B7A13742BF29D08000CC4B8 /* PathViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8B7A137F2BF2A140000CC4B8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A13802BF2A156000CC4B8 /* Agrandir_Variable.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54FF2C672BEAB75D00786E2B /* Preview Assets.xcassets in Resources */,
+				8B7A13812BF2A156000CC4B8 /* Agrandir_Variable.ttf in Resources */,
 				54FF2C642BEAB75D00786E2B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +331,7 @@
 				DEVELOPMENT_TEAM = YH7UK78RLT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dm2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,6 +360,7 @@
 				DEVELOPMENT_TEAM = YH7UK78RLT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dm2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
