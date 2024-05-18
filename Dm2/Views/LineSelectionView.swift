@@ -1,8 +1,5 @@
 //  LineSelectionView.swift
-//  Dm2
-//
-//  Created by Michele Colella on 18/05/24.
-//
+
 
 import SwiftUI
 
@@ -17,17 +14,19 @@ struct LineSelectionView: View {
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .foregroundColor(.white)
                         .background(viewModel.selectedLine == line ? Color.gray : Color.black)
+                        .onTapGesture {
+                            viewModel.selectLine(line)
+                        }
                 }
             }
             .gesture(
                 DragGesture()
                     .onEnded { value in
-                        let selectedLine = value.translation.width < 0 ? viewModel.lines.first : viewModel.lines.last
-                        if let line = selectedLine {
-                            viewModel.selectLine(line)
-                        }
+                        let selectedLine = value.translation.width < 0 ? viewModel.lines[0] : viewModel.lines[1] // Semplificazione per il test
+                        viewModel.selectLine(selectedLine)
                     }
             )
+
             .background(
                 NavigationLink(
                     destination: StationSelectionView(viewModel: viewModel, line: viewModel.selectedLine ?? viewModel.lines.first!),
