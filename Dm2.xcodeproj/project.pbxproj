@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		546FE2A02BF8F27900F97F72 /* MetroDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE29F2BF8F27900F97F72 /* MetroDataManager.swift */; };
+		546FE2A22BF8F29700F97F72 /* MetroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A12BF8F29700F97F72 /* MetroLine.swift */; };
+		546FE2A42BF8F36F00F97F72 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A32BF8F36F00F97F72 /* Station.swift */; };
+		546FE2A82BF9022000F97F72 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A72BF9022000F97F72 /* RouteManager.swift */; };
+		546FE2AA2BF9023D00F97F72 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A92BF9023D00F97F72 /* Route.swift */; };
+		546FE2AC2BF9025800F97F72 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2AB2BF9025800F97F72 /* Waypoint.swift */; };
 		54FF2C602BEAB75B00786E2B /* Dm2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF2C5F2BEAB75B00786E2B /* Dm2App.swift */; };
 		54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF2C612BEAB75B00786E2B /* ContentView.swift */; };
 		54FF2C642BEAB75D00786E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54FF2C632BEAB75D00786E2B /* Assets.xcassets */; };
@@ -19,6 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		546FE29F2BF8F27900F97F72 /* MetroDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroDataManager.swift; sourceTree = "<group>"; };
+		546FE2A12BF8F29700F97F72 /* MetroLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroLine.swift; sourceTree = "<group>"; };
+		546FE2A32BF8F36F00F97F72 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		546FE2A72BF9022000F97F72 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		546FE2A92BF9023D00F97F72 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		546FE2AB2BF9025800F97F72 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		54FF2C5C2BEAB75B00786E2B /* Dm2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dm2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FF2C5F2BEAB75B00786E2B /* Dm2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dm2App.swift; sourceTree = "<group>"; };
 		54FF2C612BEAB75B00786E2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +108,10 @@
 		54FF2C6F2BED719000786E2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				546FE2A12BF8F29700F97F72 /* MetroLine.swift */,
+				546FE2A32BF8F36F00F97F72 /* Station.swift */,
+				546FE2A92BF9023D00F97F72 /* Route.swift */,
+				546FE2AB2BF9025800F97F72 /* Waypoint.swift */,
 				8B7A13762BF29D20000CC4B8 /* Path.swift */,
 				8B7A13782BF29D5C000CC4B8 /* PathRepository.swift */,
 			);
@@ -105,6 +121,8 @@
 		54FF2C702BED719900786E2B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				546FE29F2BF8F27900F97F72 /* MetroDataManager.swift */,
+				546FE2A72BF9022000F97F72 /* RouteManager.swift */,
 				8B7A13742BF29D08000CC4B8 /* PathViewModel.swift */,
 			);
 			path = ViewModels;
@@ -189,6 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546FE2A02BF8F27900F97F72 /* MetroDataManager.swift in Sources */,
+				546FE2A22BF8F29700F97F72 /* MetroLine.swift in Sources */,
+				546FE2A42BF8F36F00F97F72 /* Station.swift in Sources */,
+				546FE2A82BF9022000F97F72 /* RouteManager.swift in Sources */,
+				546FE2AC2BF9025800F97F72 /* Waypoint.swift in Sources */,
+				54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */,
+				546FE2AA2BF9023D00F97F72 /* Route.swift in Sources */,
 				8B7A137B2BF29D7A000CC4B8 /* PathFindView.swift in Sources */,
 				8B7A13792BF29D5C000CC4B8 /* PathRepository.swift in Sources */,
 				54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */,
