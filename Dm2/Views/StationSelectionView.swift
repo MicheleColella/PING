@@ -21,19 +21,22 @@ struct StationSelectionView: View {
                         let selectedStation = line.stations[stationIndex]
                         viewModel.selectStation(selectedStation)
                     }
-            )
-            .onChange(of: viewModel.selectedStation) { _ in
-                viewModel.navigationTrigger = true
+            ).onAppear {
+                viewModel.shouldNavigateToStations = false
             }
+
+            .onChange(of: viewModel.selectedStation) { newStation in
+                if newStation != nil && !viewModel.navigationTrigger {
+                    viewModel.navigationTrigger = true
+                }
+            }
+
             .onDisappear {
-                // Controlla se la navigazione è stata completata o se l'utente sta semplicemente andando indietro.
-                if viewModel.navigationTrigger && viewModel.selectedStation == nil {
-                    // Se la navigazione al percorso non è ancora avvenuta, non resettare.
-                    // Oppure, se la navigazione al percorso è già stata fatta e l'utente sta andando indietro,
-                    // allora resetta.
+                if !viewModel.navigationTrigger {
                     viewModel.resetNavigation()
                 }
             }
+
 
             .background(
                 NavigationLink(
@@ -44,7 +47,7 @@ struct StationSelectionView: View {
             )
         }
         .onAppear {
-            viewModel.resetNavigation() // Resetta il trigger quando appare questa vista
+            viewModel.resetNavigation()
         }
     }
 }

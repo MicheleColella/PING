@@ -19,7 +19,6 @@ class PathViewModel: ObservableObject {
             Line(name: "Linea 6", stations: ["Mostra", "Margellina"])
         ]
 
-        // Assicurati che il valore iniziale sia impostato se necessario
         init() {
             activateWelcomeMessage()
         }
@@ -113,20 +112,26 @@ class PathViewModel: ObservableObject {
     func selectLine(_ line: Line) {
             selectedLine = line
             // Imposta il trigger di navigazione solo dopo la selezione effettiva
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Ritardo per prevenire trigger immediato
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.shouldNavigateToStations = true
             }
         }
 
-        func selectStation(_ station: String) {
-            selectedStation = station
-            // Qui, potrebbe essere necessario gestire la navigazione al percorso
+    func selectStation(_ station: String) {
+        selectedStation = station
+        // Dopo aver selezionato una stazione, preparati a navigare alla vista del percorso
+        DispatchQueue.main.async {
+            self.navigationTrigger = true
         }
+    }
 
-        func resetNavigation() {
-            // Funzione per resettare il trigger e le selezioni quando necessario
+    func resetNavigation() {
+        // Resetta i flag di navigazione dopo che l'utente ha navigato via dalla vista del percorso
+        if navigationTrigger {
             navigationTrigger = false
             selectedLine = nil
             selectedStation = nil
         }
+    }
+
 }
