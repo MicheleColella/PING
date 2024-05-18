@@ -7,6 +7,22 @@ import AVFoundation
 import CoreHaptics
 
 class PathViewModel: ObservableObject {
+    
+    @Published var isActive = false
+        @Published var selectedLine: Line?
+        @Published var selectedStation: String?
+        @Published var navigationTrigger: Bool = false
+
+        var lines: [Line] = [
+            Line(name: "Linea 1", stations: ["Garibaldi", "Piscinola"]),
+            Line(name: "Linea 6", stations: ["Mostra", "Margellina"])
+        ]
+
+        // Assicurati che il valore iniziale sia impostato se necessario
+        init() {
+            activateWelcomeMessage()
+        }
+    
     @Published var scale: CGFloat = 0.2
     @Published var destinationName: String = ""
     var timer: Timer?
@@ -14,10 +30,6 @@ class PathViewModel: ObservableObject {
     var currentPath: Path?
     var synthesizer = AVSpeechSynthesizer()
     var hapticEngine: CHHapticEngine?
-    
-    init() {
-        prepareHapticEngine()
-    }
     
     func startPath(destinationName: String) {
         guard let path = PathRepository.shared.findPath(by: destinationName) else {
@@ -88,4 +100,26 @@ class PathViewModel: ObservableObject {
             print("Errore nella riproduzione del feedback haptico: \(error)")
         }
     }
+    
+    func activateWelcomeMessage() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    self.isActive = true
+                }
+            }
+        }
+    
+    func selectLine(_ line: Line) {
+            selectedLine = line
+            // Aggiungi un check per assicurarti che `line` abbia stazioni valide prima di navigare
+            if !line.stations.isEmpty {
+                navigationTrigger = true
+            }
+        }
+
+        func selectStation(_ station: String) {
+            selectedStation = station
+            // Trigger la navigazione solo se `station` è valida
+            navigationTrigger = true
+        }
 }

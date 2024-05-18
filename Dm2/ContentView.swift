@@ -8,23 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = PathViewModel()
+
     var body: some View {
-        PathFindView()
-    }
-    
-    ///Controllo del font nel sistema
-    /*
-    init(){
-        for familyName in UIFont.familyNames {
-            print(familyName)
-            
-            for fontName in UIFont.fontNames(forFamilyName: familyName){
-                print("--\(fontName)")
-            }
+        NavigationView {
+            WelcomeScreen(viewModel: viewModel)
         }
     }
-     */
 }
+
+
 
 #Preview {
     ContentView()

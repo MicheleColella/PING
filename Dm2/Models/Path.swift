@@ -7,3 +7,4 @@ struct Path {
     var destinationName: String
     var beacons: [String]
 }
+

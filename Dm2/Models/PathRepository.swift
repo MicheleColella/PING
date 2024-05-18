@@ -13,7 +13,7 @@ class PathRepository {
             Path(destinationName: "Garibaldi", beacons: ["Beacon1", "Beacon2", "Beacon3", "Beacon4"]),
             Path(destinationName: "Piscinola", beacons: ["Beacon1", "Beacon5", "Beacon6"]),
             Path(destinationName: "Mostra", beacons: ["Beacon1", "Beacon7", "Beacon8"]),
-            Path(destinationName: "Margellina", beacons: ["Beacon1", "Beacon9"])
+            Path(destinationName: "Margellina", beacons: ["Beacon1", "Beacon9", "Beacon10"])
         ]
     }
 

@@ -5,6 +5,8 @@ import SwiftUI
 
 struct PathFindView: View {
     @StateObject var viewModel = PathViewModel()
+    var destination: String
+
     
     var body: some View {
         ZStack {
@@ -36,7 +38,7 @@ struct PathFindView: View {
             .accessibility(hidden: true)
             
             .onAppear {
-                viewModel.startPath(destinationName: "Margellina")
+                viewModel.startPath(destinationName: destination)
             }
         }
     }
@@ -44,6 +46,6 @@ struct PathFindView: View {
 
 struct PathFindView_Previews: PreviewProvider {
     static var previews: some View {
-        PathFindView(viewModel: PathViewModel())
+        PathFindView(viewModel: PathViewModel(), destination: "Margellina")
     }
 }
