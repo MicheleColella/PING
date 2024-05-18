@@ -11,7 +11,7 @@ import SwiftUI
 struct Dm2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomeScreen(viewModel: PathViewModel())
         }
     }
 }
