@@ -40,6 +40,10 @@ struct PathFindView: View {
             .onAppear {
                 viewModel.startPath(destinationName: destination)
             }
+            .onDisappear {
+                        // Reset del trigger quando l'utente naviga via dalla vista del percorso
+                        viewModel.resetNavigation()
+                    }
         }
     }
 }

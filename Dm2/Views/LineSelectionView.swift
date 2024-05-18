@@ -17,28 +17,23 @@ struct LineSelectionView: View {
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .foregroundColor(.white)
                         .background(viewModel.selectedLine == line ? Color.gray : Color.black)
-                        .onTapGesture {
-                            viewModel.selectLine(line)
-                        }
                 }
             }
             .gesture(
                 DragGesture()
                     .onEnded { value in
-                        let line = value.translation.width < 0 ? viewModel.lines.first : viewModel.lines.last
-                        if let safeLine = line {
-                            viewModel.selectLine(safeLine)
+                        let selectedLine = value.translation.width < 0 ? viewModel.lines.first : viewModel.lines.last
+                        if let line = selectedLine {
+                            viewModel.selectLine(line)
                         }
                     }
             )
-            // Usa l'opzionale per la navigazione
             .background(
-                viewModel.selectedLine != nil ?
                 NavigationLink(
-                    destination: StationSelectionView(viewModel: viewModel, line: viewModel.selectedLine!),
-                    isActive: $viewModel.navigationTrigger,
+                    destination: StationSelectionView(viewModel: viewModel, line: viewModel.selectedLine ?? viewModel.lines.first!),
+                    isActive: $viewModel.shouldNavigateToStations,
                     label: { EmptyView() }
-                ) : nil
+                )
             )
         }
     }

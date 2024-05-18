@@ -1,9 +1,3 @@
-//  StationSelectionView.swift
-//  Dm2
-//
-//  Created by Michele Colella on 18/05/24.
-//
-
 import SwiftUI
 
 struct StationSelectionView: View {
@@ -18,21 +12,39 @@ struct StationSelectionView: View {
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .foregroundColor(.white)
                         .background(viewModel.selectedStation == station ? Color.gray : Color.black)
-                        .onTapGesture {
-                            viewModel.selectStation(station)
-                        }
                 }
             }
-            
-            // Stessa logica di sicurezza per la navigazione
+            .gesture(
+                DragGesture()
+                    .onEnded { value in
+                        let stationIndex = value.translation.width < 0 ? 0 : 1 // Assume sempre due stazioni
+                        let selectedStation = line.stations[stationIndex]
+                        viewModel.selectStation(selectedStation)
+                    }
+            )
+            .onChange(of: viewModel.selectedStation) { _ in
+                viewModel.navigationTrigger = true
+            }
+            .onDisappear {
+                // Controlla se la navigazione è stata completata o se l'utente sta semplicemente andando indietro.
+                if viewModel.navigationTrigger && viewModel.selectedStation == nil {
+                    // Se la navigazione al percorso non è ancora avvenuta, non resettare.
+                    // Oppure, se la navigazione al percorso è già stata fatta e l'utente sta andando indietro,
+                    // allora resetta.
+                    viewModel.resetNavigation()
+                }
+            }
+
             .background(
-                viewModel.selectedStation != nil ?
                 NavigationLink(
-                    destination: PathFindView(destination: viewModel.selectedStation ?? "N/A"),
+                    destination: PathFindView(destination: viewModel.selectedStation ?? "No destination selected"),
                     isActive: $viewModel.navigationTrigger,
                     label: { EmptyView() }
-                ) : nil
+                )
             )
+        }
+        .onAppear {
+            viewModel.resetNavigation() // Resetta il trigger quando appare questa vista
         }
     }
 }

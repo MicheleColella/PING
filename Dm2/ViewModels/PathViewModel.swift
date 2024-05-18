@@ -9,11 +9,12 @@ import CoreHaptics
 class PathViewModel: ObservableObject {
     
     @Published var isActive = false
-        @Published var selectedLine: Line?
+    @Published var selectedLine: Line?
         @Published var selectedStation: String?
-        @Published var navigationTrigger: Bool = false
+        @Published var navigationTrigger = false
+    @Published var shouldNavigateToStations = false
 
-        var lines: [Line] = [
+    var lines: [Line] = [
             Line(name: "Linea 1", stations: ["Garibaldi", "Piscinola"]),
             Line(name: "Linea 6", stations: ["Mostra", "Margellina"])
         ]
@@ -111,15 +112,21 @@ class PathViewModel: ObservableObject {
     
     func selectLine(_ line: Line) {
             selectedLine = line
-            // Aggiungi un check per assicurarti che `line` abbia stazioni valide prima di navigare
-            if !line.stations.isEmpty {
-                navigationTrigger = true
+            // Imposta il trigger di navigazione solo dopo la selezione effettiva
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Ritardo per prevenire trigger immediato
+                self.shouldNavigateToStations = true
             }
         }
 
         func selectStation(_ station: String) {
             selectedStation = station
-            // Trigger la navigazione solo se `station` è valida
-            navigationTrigger = true
+            // Qui, potrebbe essere necessario gestire la navigazione al percorso
+        }
+
+        func resetNavigation() {
+            // Funzione per resettare il trigger e le selezioni quando necessario
+            navigationTrigger = false
+            selectedLine = nil
+            selectedStation = nil
         }
 }
