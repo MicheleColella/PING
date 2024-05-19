@@ -1,6 +1,3 @@
-//  LineSelectionView.swift
-
-
 import SwiftUI
 
 struct LineSelectionView: View {
@@ -9,24 +6,28 @@ struct LineSelectionView: View {
     var body: some View {
         GeometryReader { geometry in
             HStack(spacing: 0) {
-                ForEach(viewModel.lines, id: \.self) { line in
-                    Text(line.name)
-                        .frame(width: geometry.size.width / 2, height: geometry.size.height)
-                        .foregroundColor(.white)
-                        .background(viewModel.selectedLine == line ? Color.gray : Color.black)
-                        .onTapGesture {
-                            viewModel.selectLine(line)
-                        }
+                ForEach(viewModel.lines.indices, id: \.self) { index in
+                    VStack {
+                        Spacer()
+                        Text(viewModel.lines[index].name)
+                            .font(.custom("AgrandirVariable_Bold", size: 60))
+                            .rotationEffect(.degrees(90))
+                            .frame(width: geometry.size.height, height: geometry.size.width / 2)
+                            .foregroundColor(index == 0 ? .black : .white)
+                        Spacer()
+                    }
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height)
+                    .background(index == 0 ? Color.white : Color.black)
                 }
             }
             .gesture(
                 DragGesture()
                     .onEnded { value in
-                        let selectedLine = value.translation.width < 0 ? viewModel.lines[0] : viewModel.lines[1] // Semplificazione per il test
+                        let direction = value.translation.width < 0 ? 0 : 1  // Determina la direzione del swipe
+                        let selectedLine = viewModel.lines[direction]
                         viewModel.selectLine(selectedLine)
                     }
             )
-
             .background(
                 NavigationLink(
                     destination: StationSelectionView(viewModel: viewModel, line: viewModel.selectedLine ?? viewModel.lines.first!),
@@ -36,4 +37,8 @@ struct LineSelectionView: View {
             )
         }
     }
+}
+
+#Preview {
+    LineSelectionView(viewModel: PathViewModel())
 }
