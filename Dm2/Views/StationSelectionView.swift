@@ -19,7 +19,6 @@ struct StationSelectionView: View {
                     }
                     .frame(width: geometry.size.width / 2, height: geometry.size.height)
                     .background(index == 0 ? Color.black : Color.white)
-                    // Rimuovere onTapGesture per disabilitare la selezione tramite tocco
                 }
             }
             .gesture(
@@ -30,12 +29,9 @@ struct StationSelectionView: View {
                         viewModel.selectStation(selectedStation)
                     }
             )
-            .background(
-                NavigationLink(
-                    destination: PathFindView(destination: viewModel.selectedStation ?? "No destination selected"),
-                    isActive: $viewModel.navigationTrigger,
-                    label: { EmptyView() }
-                )
+            .navigationDestination(
+                isPresented: $viewModel.navigationTrigger,
+                destination: {PathFindView(destination: viewModel.selectedStation ?? "No destination selected")}
             )
         }
         .onAppear {
