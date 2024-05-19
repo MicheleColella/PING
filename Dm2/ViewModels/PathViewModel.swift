@@ -21,6 +21,7 @@ class PathViewModel: ObservableObject {
         ]
 
     init() {
+        prepareHapticEngine()
         activateWelcomeMessage()
     }
     
@@ -81,24 +82,32 @@ class PathViewModel: ObservableObject {
         do {
             hapticEngine = try CHHapticEngine()
             try hapticEngine?.start()
+            print("Haptic engine started successfully.")
         } catch {
             print("Errore nell'inizializzazione del motore haptico: \(error)")
         }
     }
     
     func playHaptic() {
-        guard let engine = hapticEngine else { return }
-        
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(scale/2))
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(scale))
+        guard let engine = hapticEngine else {
+            print("Haptic engine is not available.")
+            prepareHapticEngine()  // Tentativo di riavviare il motore haptico se non è disponibile
+            return
+        }
+
+        let intensityValue = Float(scale / 2)
+        let sharpnessValue = Float(scale)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: intensityValue)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: sharpnessValue)
         let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.4)
-        
+
         do {
             let pattern = try CHHapticPattern(events: [event], parameters: [])
             let player = try engine.makePlayer(with: pattern)
             try player.start(atTime: 0)
+            print("Haptic event played with intensity \(intensityValue) and sharpness \(sharpnessValue).")
         } catch {
-            print("Errore nella riproduzione del feedback haptico: \(error)")
+            print("Failed to play haptic feedback: \(error)")
         }
     }
     
