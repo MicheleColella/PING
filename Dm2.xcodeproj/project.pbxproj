@@ -219,9 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				8B7A13842BF89E49000CC4B8 /* WelcomeScreenView.swift in Sources */,
-
 				546FE2A02BF8F27900F97F72 /* MetroDataManager.swift in Sources */,
 				546FE2A22BF8F29700F97F72 /* MetroLine.swift in Sources */,
 				546FE2A42BF8F36F00F97F72 /* Station.swift in Sources */,
@@ -229,7 +227,6 @@
 				546FE2AC2BF9025800F97F72 /* Waypoint.swift in Sources */,
 				54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */,
 				546FE2AA2BF9023D00F97F72 /* Route.swift in Sources */,
-
 				8B7A137B2BF29D7A000CC4B8 /* PathFindView.swift in Sources */,
 				8B7A13792BF29D5C000CC4B8 /* PathRepository.swift in Sources */,
 				8B7A13862BF89E6B000CC4B8 /* LineSelectionView.swift in Sources */,
@@ -376,6 +373,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dm2/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "PING!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -405,6 +403,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dm2/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "PING!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
