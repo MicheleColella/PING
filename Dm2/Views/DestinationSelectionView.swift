@@ -28,19 +28,18 @@ struct DestinationSelectionView: View {
                 let totalTranslation = drag.location.x - drag.startLocation.x
                 if(totalTranslation > 0){
                     currentState = .scrollingToRight
-                    self.translation = drag.location.x - drag.startLocation.x
+                    self.translation = totalTranslation
                     print(self.translation)
-                    self.opacity = 0.8
                 }else{
                     currentState = .scrollingToLeft
-                    self.translation = drag.startLocation.x - drag.location.x
+                    self.translation = -totalTranslation
                     print(self.translation)
-                    self.opacity = 0.8
                 }
+                self.opacity = self.translation / (self.screenSize.width / 1.5)
             }
             .onEnded { drag in
-                let totalTranslation = abs(drag.location.x - drag.startLocation.x)
-                if totalTranslation > 60{
+                let totalTranslation = drag.location.x - drag.startLocation.x
+                if abs(totalTranslation) > 60{
                     completeTransition()
                 }else{
                     resetState()
@@ -55,15 +54,15 @@ struct DestinationSelectionView: View {
                 case .scrollingToLeft:
                     SelectionSplitView(beetween: "Mergellina", and: "Mostra")
                         .colorInvert()
-                        .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
+                        .opacity(0.0 + self.opacity)
                     SelectionSplitView(beetween: "Linea 1", and: "Linea 6")
-                        .opacity(1.0 - self.translation / (proxy.size.width / 1.5))
+                        .opacity(1.0 - self.opacity)
                 case .scrollingToRight:
                     SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
-                        .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
+                        .opacity(0.0 + self.opacity)
                         .colorInvert()
                     SelectionSplitView(beetween: "Linea 1", and: "Linea 6")
-                        .opacity(1.0 - self.translation / (proxy.size.width / 1.5))
+                        .opacity(1.0 - opacity)
                 case .selectedLeft:
                     SelectionSplitView(beetween: "Mergellina", and: "Mostra")
                         .colorInvert()
@@ -96,13 +95,14 @@ struct DestinationSelectionView: View {
                 })
                 .ignoresSafeArea()
             )
-            .gesture(customDrag)
+            .gesture(self.customDrag)
         }
     }
     
     func resetState(){
         withAnimation{
             self.translation = 0.0
+            opacity = 0.0
         }
     }
     
@@ -110,12 +110,14 @@ struct DestinationSelectionView: View {
         if(currentState == .scrollingToLeft){
             withAnimation{
                 translation = self.screenSize.width / 2
+                opacity = 1.0
             } completion: {
                 currentState = .selectedLeft
             }
         }else if (currentState == .scrollingToRight){
             withAnimation{
                 translation = self.screenSize.width / 2
+                opacity = 1.0
             } completion: {
                 currentState = .selectedRight
             }
