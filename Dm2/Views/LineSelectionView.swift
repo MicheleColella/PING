@@ -2,7 +2,6 @@ import SwiftUI
 
 struct LineSelectionView: View {
     @ObservedObject var viewModel: PathViewModel
-    @State private var goToStations : Bool = false
 
     var body: some View {
         NavigationStack{
