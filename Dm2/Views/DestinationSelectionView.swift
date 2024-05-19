@@ -66,9 +66,15 @@ struct DestinationSelectionView: View {
                 case .selectedLeft:
                     SelectionSplitView(beetween: "Mergellina", and: "Mostra")
                         .colorInvert()
+                    CustomBackButton(){
+                        resetState()
+                    }
                 case .selectedRight:
                     SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
                         .colorInvert()
+                    CustomBackButton(){
+                        resetState()
+                    }
                 default:
                     EmptyView()
                 }
@@ -103,6 +109,8 @@ struct DestinationSelectionView: View {
         withAnimation{
             self.translation = 0.0
             opacity = 0.0
+        } completion: {
+            currentState = .scrollingToLeft
         }
     }
     
