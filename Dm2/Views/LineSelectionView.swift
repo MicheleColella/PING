@@ -27,7 +27,6 @@ struct LineSelectionView: View {
                             let direction = value.translation.width < 0 ? 0 : 1  // Determina la direzione del swipe
                             let selectedLine = viewModel.lines[direction]
                             viewModel.selectLine(selectedLine)
-                            goToStations = true
                         }
                 )
                 .navigationDestination(
