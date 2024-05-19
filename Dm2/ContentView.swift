@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = PathViewModel()
+    @ObservedObject var viewModel = PathViewModel()
 
     var body: some View {
-        NavigationView {
-            WelcomeScreen(viewModel: viewModel)
-        }
+        WelcomeScreen(viewModel: viewModel)
     }
 }
 
