@@ -18,7 +18,6 @@ struct DestinationSelectionView: View {
     }
     
     @State private var currentState : ScreenState = .scrollingToLeft
-    @State private var selection : String = ""
     @State private var translation : Double = 0.0
     @State private var opacity     : Double = 0.0
     @State private var screenSize  : CGSize = .zero
@@ -70,7 +69,6 @@ struct DestinationSelectionView: View {
                         .colorInvert()
                 case .selectedRight:
                     SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
-                        .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
                         .colorInvert()
                 default:
                     EmptyView()
@@ -98,9 +96,6 @@ struct DestinationSelectionView: View {
                 })
                 .ignoresSafeArea()
             )
-            .onChange(of: selection) { oldValue, newValue in
-                print("selection change from \(oldValue) to \(newValue)")
-            }
             .gesture(customDrag)
         }
     }
