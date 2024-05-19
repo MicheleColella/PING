@@ -12,7 +12,8 @@ struct DestinationSelectionView: View {
     enum ScreenState{
         case scrollingToLeft
         case scrollingToRight
-        case choosingDirection
+        case selectedLeft
+        case selectedRight
         case selectedDirection
     }
     
@@ -20,6 +21,7 @@ struct DestinationSelectionView: View {
     @State private var selection : String = ""
     @State private var translation : Double = 0.0
     @State private var opacity     : Double = 0.0
+    @State private var screenSize  : CGSize = .zero
     
     private var customDrag: some Gesture{
         DragGesture()
@@ -37,9 +39,13 @@ struct DestinationSelectionView: View {
                     self.opacity = 0.8
                 }
             }
-            .onEnded { value in
-                currentState = .scrollingToLeft
-                self.translation = 0.0
+            .onEnded { drag in
+                let totalTranslation = abs(drag.location.x - drag.startLocation.x)
+                if totalTranslation > 60{
+                    completeTransition()
+                }else{
+                    resetState()
+                }
             }
     }
     
@@ -48,39 +54,46 @@ struct DestinationSelectionView: View {
             ZStack{
                 switch self.currentState {
                 case .scrollingToLeft:
-                    SelectionView(selection: $selection, beetween: "Mergellina", and: "Mostra")
+                    SelectionSplitView(beetween: "Mergellina", and: "Mostra")
                         .colorInvert()
                         .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
-                    SelectionView(selection: $selection, beetween: "Linea 1", and: "Linea 6")
+                    SelectionSplitView(beetween: "Linea 1", and: "Linea 6")
                         .opacity(1.0 - self.translation / (proxy.size.width / 1.5))
-                        .onAppear(){
-                            print(proxy.size.width)
-                        }
                 case .scrollingToRight:
-                    SelectionView(selection: $selection, beetween: "Garibaldi", and: "Piscinola")
+                    SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
                         .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
                         .colorInvert()
-                    SelectionView(selection: $selection, beetween: "Linea 1", and: "Linea 6")
+                    SelectionSplitView(beetween: "Linea 1", and: "Linea 6")
                         .opacity(1.0 - self.translation / (proxy.size.width / 1.5))
-                case .choosingDirection:
-                    SelectionView(selection: $selection, beetween: "Option 1", and: "Option 2")
+                case .selectedLeft:
+                    SelectionSplitView(beetween: "Mergellina", and: "Mostra")
+                        .colorInvert()
+                case .selectedRight:
+                    SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
+                        .opacity(0.0 + self.translation / (proxy.size.width / 1.5))
+                        .colorInvert()
                 default:
                     EmptyView()
                 }
             }
+            .onAppear(){
+                self.screenSize = proxy.size
+            }
             .background(
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
-                    if self.currentState == .scrollingToLeft{
+                    switch(self.currentState){
+                    case .scrollingToLeft, .selectedLeft:
                         Color.white
                         Color.black
                             .frame(width: proxy.size.width / 2)
                             .offset(x: proxy.size.width/2 - translation)
-                    }
-                    else if self.currentState == .scrollingToRight{
+                    case .scrollingToRight, .selectedRight:
                         Color.black
                         Color.white
                             .frame(width: proxy.size.width / 2)
                             .offset(x: translation)
+                    default:
+                        Color.black
                     }
                 })
                 .ignoresSafeArea()
@@ -89,6 +102,28 @@ struct DestinationSelectionView: View {
                 print("selection change from \(oldValue) to \(newValue)")
             }
             .gesture(customDrag)
+        }
+    }
+    
+    func resetState(){
+        withAnimation{
+            self.translation = 0.0
+        }
+    }
+    
+    func completeTransition(){
+        if(currentState == .scrollingToLeft){
+            withAnimation{
+                translation = self.screenSize.width / 2
+            } completion: {
+                currentState = .selectedLeft
+            }
+        }else if (currentState == .scrollingToRight){
+            withAnimation{
+                translation = self.screenSize.width / 2
+            } completion: {
+                currentState = .selectedRight
+            }
         }
     }
 }
