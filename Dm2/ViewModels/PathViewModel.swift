@@ -9,21 +9,20 @@ import CoreHaptics
 class PathViewModel: ObservableObject {
     
     @Published var isActive: Bool = false
-        @Published var welcomeMessagePlayed: Bool = false
-    
+    @Published var welcomeMessagePlayed: Bool = false
     @Published var selectedLine: Line?
-        @Published var selectedStation: String?
-        @Published var navigationTrigger = false
+    @Published var selectedStation: String?
+    @Published var navigationTrigger = false
     @Published var shouldNavigateToStations = false
 
-    var lines: [Line] = [
+    let lines: [Line] = [
             Line(name: "Linea 1", stations: ["Garibaldi", "Piscinola"]),
             Line(name: "Linea 6", stations: ["Mostra", "Margellina"])
         ]
 
-        init() {
-            activateWelcomeMessage()
-        }
+    init() {
+        activateWelcomeMessage()
+    }
     
     @Published var scale: CGFloat = 0.2
     @Published var destinationName: String = ""
@@ -104,12 +103,12 @@ class PathViewModel: ObservableObject {
     }
     
     func activateWelcomeMessage() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    self.isActive = true
-                }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                self.isActive = true
             }
         }
+    }
     
     func selectLine(_ line: Line) {
         selectedLine = line
