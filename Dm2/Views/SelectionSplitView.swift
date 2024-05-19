@@ -1,5 +1,5 @@
 //
-//  SelectionView.swift
+//  SelectionSplitView.swift
 //  Dm2
 //
 //  Created by Salvatore Attanasio on 19/05/24.
@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct SelectionView: View {
-    var choice1 : String
-    var choice2 : String
-    @Binding var selection : String
+struct SelectionSplitView: View {
+    var option1 : String
+    var option2 : String
     
-    init(selection: Binding<String>, beetween choice1: String, and choice2: String){
-        self._selection  = selection
-        self.choice1    = choice1
-        self.choice2    = choice2
+    init(beetween option1: String, and option2: String){
+        self.option1    = option1
+        self.option2    = option2
     }
     
     func option(text: String, size: CGSize) -> some View{
@@ -36,36 +34,24 @@ struct SelectionView: View {
     var body: some View {
         GeometryReader { geometry in
             HStack(spacing: 0) {
-                option(text: choice1, size: CGSize(
+                option(text: option1, size: CGSize(
                     width: geometry.size.width / 2,
                     height: geometry.size.height)
                 )
                 .foregroundColor(.black)
-                //.background(Color.white)
-                option(text: choice2, size: CGSize(
+                option(text: option2, size: CGSize(
                     width: geometry.size.width / 2,
                     height: geometry.size.height)
                 )
                 .foregroundStyle(.white)
-                //.background(Color.black)
             }
-//            .gesture(
-//                DragGesture()
-//                    .onEnded { swipe in
-//                        if swipe.translation.width < 0{
-//                            selection = choice1
-//                        } else {
-//                            selection = choice2
-//                        }
-//                    }
-//            )
             .ignoresSafeArea()
         }
     }
 }
 
 #Preview {
-    SelectionView(selection: .constant(""), beetween: "Option 1", and: "Option 2")
+    SelectionSplitView(beetween: "Option 1", and: "Option 2")
     .background(
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
             Color.black
