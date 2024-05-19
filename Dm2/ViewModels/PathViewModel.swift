@@ -8,7 +8,9 @@ import CoreHaptics
 
 class PathViewModel: ObservableObject {
     
-    @Published var isActive = false
+    @Published var isActive: Bool = false
+        @Published var welcomeMessagePlayed: Bool = false
+    
     @Published var selectedLine: Line?
         @Published var selectedStation: String?
         @Published var navigationTrigger = false
