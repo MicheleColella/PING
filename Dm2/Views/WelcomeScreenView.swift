@@ -3,7 +3,6 @@ import AVFoundation
 
 struct WelcomeScreen: View {
     @ObservedObject var viewModel: PathViewModel
-    let synthesizer = AVSpeechSynthesizer()
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,19 +22,5 @@ struct WelcomeScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
         .foregroundColor(.white)
-        .onAppear {
-            //speakWelcomeMessage()
-        }
     }
-
-    /*
-    private func speakWelcomeMessage() {
-        if synthesizer.isSpeaking {
-            synthesizer.stopSpeaking(at: .immediate)
-        }
-        let utterance = AVSpeechUtterance(string: "Benvenuto a municipio")
-        utterance.voice = AVSpeechSynthesisVoice(language: "it-IT")
-        synthesizer.speak(utterance)
-    }
-     */
 }

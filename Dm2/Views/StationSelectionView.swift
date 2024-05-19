@@ -14,12 +14,11 @@ struct StationSelectionView: View {
                             .font(.custom("AgrandirVariable_Bold", size: 56))
                             .rotationEffect(.degrees(90))
                             .frame(width: geometry.size.height, height: geometry.size.width / 2)
-                            .foregroundColor(index == 0 ? .black : .white)
+                            .foregroundColor(index == 0 ? .white : .black)
                         Spacer()
                     }
                     .frame(width: geometry.size.width / 2, height: geometry.size.height)
-                    .background(index == 0 ? Color.white : Color.black)
-                    // Rimuovere onTapGesture per disabilitare la selezione tramite tocco
+                    .background(index == 0 ? Color.black : Color.white)
                 }
             }
             .gesture(
@@ -30,12 +29,9 @@ struct StationSelectionView: View {
                         viewModel.selectStation(selectedStation)
                     }
             )
-            .background(
-                NavigationLink(
-                    destination: PathFindView(destination: viewModel.selectedStation ?? "No destination selected"),
-                    isActive: $viewModel.navigationTrigger,
-                    label: { EmptyView() }
-                )
+            .navigationDestination(
+                isPresented: $viewModel.navigationTrigger,
+                destination: {PathFindView(destination: viewModel.selectedStation ?? "No destination selected")}
             )
         }
         .onAppear {
