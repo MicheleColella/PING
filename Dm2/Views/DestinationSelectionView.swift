@@ -26,16 +26,14 @@ struct DestinationSelectionView: View {
         DragGesture()
             .onChanged{ drag in
                 let totalTranslation = drag.location.x - drag.startLocation.x
-                if(totalTranslation > 0){
-                    currentState = .scrollingToRight
-                    self.translation = totalTranslation
-                    print(self.translation)
-                }else{
-                    currentState = .scrollingToLeft
-                    self.translation = -totalTranslation
-                    print(self.translation)
+                switch(self.currentState){
+                case .scrollingToLeft, .scrollingToRight:
+                    lineDragHandle(translation: totalTranslation)
+                case .selectedLeft, .selectedRight:
+                    stationDragHandle(translation: totalTranslation)
+                default:
+                    return
                 }
-                self.opacity = self.translation / (self.screenSize.width / 1.5)
             }
             .onEnded { drag in
                 let totalTranslation = drag.location.x - drag.startLocation.x
@@ -63,20 +61,20 @@ struct DestinationSelectionView: View {
                         .colorInvert()
                     SelectionSplitView(beetween: "Linea 1", and: "Linea 6")
                         .opacity(1.0 - opacity)
-                case .selectedLeft:
+                case .selectedRight:
                     SelectionSplitView(beetween: "Mergellina", and: "Mostra")
                         .colorInvert()
                     CustomBackButton(){
                         resetState()
                     }
-                case .selectedRight:
+                case .selectedLeft:
                     SelectionSplitView(beetween: "Garibaldi", and: "Piscinola")
                         .colorInvert()
                     CustomBackButton(){
                         resetState()
                     }
-                default:
-                    EmptyView()
+                case .selectedDirection:
+                    PathFindView(destination: "garibaldi")
                 }
             }
             .onAppear(){
@@ -85,23 +83,56 @@ struct DestinationSelectionView: View {
             .background(
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
                     switch(self.currentState){
-                    case .scrollingToLeft, .selectedLeft:
+                    case .scrollingToLeft:
                         Color.white
                         Color.black
                             .frame(width: proxy.size.width / 2)
                             .offset(x: proxy.size.width/2 - translation)
-                    case .scrollingToRight, .selectedRight:
+                    case .scrollingToRight:
                         Color.black
                         Color.white
                             .frame(width: proxy.size.width / 2)
                             .offset(x: translation)
-                    default:
+                    case .selectedRight:
+                        Color.white
                         Color.black
+                            .frame(width: proxy.size.width / 2)
+                            .offset(x: 0)
+                    case .selectedLeft:
+                        Color.black
+                        Color.white
+                            .frame(width: proxy.size.width / 2)
+                            .offset(x: proxy.size.width / 2)
+                    default:
+                        EmptyView()
                     }
                 })
                 .ignoresSafeArea()
             )
             .gesture(self.customDrag)
+        }
+    }
+    
+    func lineDragHandle(translation: Double){
+        if(translation > 0){
+            currentState = .scrollingToRight
+            self.translation = translation
+            print(self.translation)
+        }else{
+            currentState = .scrollingToLeft
+            self.translation = -translation
+            print(self.translation)
+        }
+        self.opacity = self.translation / (self.screenSize.width / 1.5)
+    }
+    
+    func stationDragHandle(translation: Double){
+        if(translation < 0){
+            self.translation = -translation
+            print(self.translation)
+        }else{
+            self.translation = translation
+            print(self.translation)
         }
     }
     
@@ -120,14 +151,16 @@ struct DestinationSelectionView: View {
                 translation = self.screenSize.width / 2
                 opacity = 1.0
             } completion: {
-                currentState = .selectedLeft
+                currentState = .selectedRight
+                print(self.currentState)
             }
         }else if (currentState == .scrollingToRight){
             withAnimation{
                 translation = self.screenSize.width / 2
                 opacity = 1.0
             } completion: {
-                currentState = .selectedRight
+                currentState = .selectedLeft
+                print(self.currentState)
             }
         }
     }
