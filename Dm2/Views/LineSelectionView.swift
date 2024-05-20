@@ -21,6 +21,7 @@ struct LineSelectionView: View {
                         .background(index == 0 ? Color.white : Color.black)
                     }
                 }
+                .accessibilityAddTraits(.allowsDirectInteraction)
                 .gesture(
                     DragGesture()
                         .onEnded { value in
