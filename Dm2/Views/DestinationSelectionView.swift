@@ -38,7 +38,16 @@ struct DestinationSelectionView: View {
             .onEnded { drag in
                 let totalTranslation = drag.location.x - drag.startLocation.x
                 if abs(totalTranslation) > 60{
-                    completeTransition()
+                    switch(self.currentState){
+                    case .scrollingToLeft:
+                        completeTransition(to: .selectedRight)
+                    case .scrollingToRight:
+                        completeTransition(to: .selectedLeft)
+                    case .selectedLeft, .selectedRight:
+                        completeTransition(to: .selectedDirection)
+                    default:
+                        return
+                    }
                 }else{
                     resetState()
                 }
@@ -74,7 +83,7 @@ struct DestinationSelectionView: View {
                         resetState()
                     }
                 case .selectedDirection:
-                    PathFindView(destination: "garibaldi")
+                    PathFindView(destination: "Garibaldi")
                 }
             }
             .onAppear(){
@@ -128,13 +137,6 @@ struct DestinationSelectionView: View {
     
     func stationDragHandle(translation: Double){
         self.translation = translation
-//        if(translation < 0){
-//            self.translation = -translation
-//            print(self.translation)
-//        }else{
-//            self.translation = translation
-//            print(self.translation)
-//        }
     }
     
     func resetState(){
@@ -146,25 +148,38 @@ struct DestinationSelectionView: View {
         }
     }
     
-    func completeTransition(){
-        if(currentState == .scrollingToLeft){
+    func completeTransition(to finalState: ScreenState){
+        switch(finalState){
+        case .selectedLeft, .selectedRight:
             withAnimation{
                 self.translation = self.screenSize.width / 2
                 self.opacity = 1.0
             } completion: {
-                self.currentState = .selectedRight
+                if(currentState == .scrollingToLeft){
+                    self.currentState = .selectedRight
+                }else if(currentState == .scrollingToRight){
+                    self.currentState = .selectedLeft
+                }
                 self.translation = 0.0
-                print(self.currentState)
             }
-        }else if (currentState == .scrollingToRight){
-            withAnimation{
-                self.translation = self.screenSize.width / 2
-                self.opacity = 1.0
-            } completion: {
-                currentState = .selectedLeft
-                self.translation = 0.0
-                print(self.currentState)
+        case .selectedDirection:
+            if (self.translation > 0){
+                withAnimation{
+                    self.translation = self.screenSize.width / 2
+                    self.opacity = 1.0
+                } completion: {
+                    self.currentState = .selectedDirection
+                }
+            }else{
+                withAnimation{
+                    self.translation = -self.screenSize.width / 2
+                    self.opacity = 1.0
+                } completion: {
+                    self.currentState = .selectedDirection
+                }
             }
+        default:
+            return
         }
     }
 }
