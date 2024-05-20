@@ -87,22 +87,22 @@ struct DestinationSelectionView: View {
                         Color.white
                         Color.black
                             .frame(width: proxy.size.width / 2)
-                            .offset(x: proxy.size.width/2 - translation)
+                            .offset(x: proxy.size.width/2 - self.translation)
                     case .scrollingToRight:
                         Color.black
                         Color.white
                             .frame(width: proxy.size.width / 2)
-                            .offset(x: translation)
+                            .offset(x: self.translation)
                     case .selectedRight:
                         Color.white
                         Color.black
-                            .frame(width: proxy.size.width / 2)
+                            .frame(width: proxy.size.width / 2 + self.translation)
                             .offset(x: 0)
                     case .selectedLeft:
                         Color.black
                         Color.white
-                            .frame(width: proxy.size.width / 2)
-                            .offset(x: proxy.size.width / 2)
+                            .frame(width: proxy.size.width / 2 - self.translation)
+                            .offset(x: proxy.size.width / 2 + self.translation)
                     default:
                         EmptyView()
                     }
@@ -127,13 +127,14 @@ struct DestinationSelectionView: View {
     }
     
     func stationDragHandle(translation: Double){
-        if(translation < 0){
-            self.translation = -translation
-            print(self.translation)
-        }else{
-            self.translation = translation
-            print(self.translation)
-        }
+        self.translation = translation
+//        if(translation < 0){
+//            self.translation = -translation
+//            print(self.translation)
+//        }else{
+//            self.translation = translation
+//            print(self.translation)
+//        }
     }
     
     func resetState(){
@@ -148,18 +149,20 @@ struct DestinationSelectionView: View {
     func completeTransition(){
         if(currentState == .scrollingToLeft){
             withAnimation{
-                translation = self.screenSize.width / 2
-                opacity = 1.0
+                self.translation = self.screenSize.width / 2
+                self.opacity = 1.0
             } completion: {
-                currentState = .selectedRight
+                self.currentState = .selectedRight
+                self.translation = 0.0
                 print(self.currentState)
             }
         }else if (currentState == .scrollingToRight){
             withAnimation{
-                translation = self.screenSize.width / 2
-                opacity = 1.0
+                self.translation = self.screenSize.width / 2
+                self.opacity = 1.0
             } completion: {
                 currentState = .selectedLeft
+                self.translation = 0.0
                 print(self.currentState)
             }
         }
