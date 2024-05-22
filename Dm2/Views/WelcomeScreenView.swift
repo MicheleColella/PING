@@ -7,7 +7,7 @@ struct WelcomeScreen: View {
     var body: some View {
         VStack(alignment: .leading) {
             if viewModel.isActive {
-                LineSelectionView(viewModel: viewModel)
+                DestinationSelectionView()
             } else {
                 Text("Benvenuto a\nmunicipio")
                     .font(.custom("AgrandirVariable_Bold", size: 56))

@@ -13,6 +13,9 @@
 		546FE2A82BF9022000F97F72 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A72BF9022000F97F72 /* RouteManager.swift */; };
 		546FE2AA2BF9023D00F97F72 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2A92BF9023D00F97F72 /* Route.swift */; };
 		546FE2AC2BF9025800F97F72 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2AB2BF9025800F97F72 /* Waypoint.swift */; };
+		546FE2AE2BFA4C9000F97F72 /* DestinationSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2AD2BFA4C9000F97F72 /* DestinationSelectionView.swift */; };
+		546FE2B02BFA4E4E00F97F72 /* SelectionSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2AF2BFA4E4E00F97F72 /* SelectionSplitView.swift */; };
+		546FE2B32BFA87FD00F97F72 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546FE2B22BFA87FD00F97F72 /* CustomBackButton.swift */; };
 		54FF2C602BEAB75B00786E2B /* Dm2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF2C5F2BEAB75B00786E2B /* Dm2App.swift */; };
 		54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FF2C612BEAB75B00786E2B /* ContentView.swift */; };
 		54FF2C642BEAB75D00786E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54FF2C632BEAB75D00786E2B /* Assets.xcassets */; };
@@ -23,7 +26,6 @@
 		8B7A137B2BF29D7A000CC4B8 /* PathFindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A137A2BF29D7A000CC4B8 /* PathFindView.swift */; };
 		8B7A13812BF2A156000CC4B8 /* Agrandir_Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A13802BF2A156000CC4B8 /* Agrandir_Variable.ttf */; };
 		8B7A13842BF89E49000CC4B8 /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13832BF89E49000CC4B8 /* WelcomeScreenView.swift */; };
-		8B7A13862BF89E6B000CC4B8 /* LineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13852BF89E6B000CC4B8 /* LineSelectionView.swift */; };
 		8B7A13882BF89E82000CC4B8 /* StationSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13872BF89E82000CC4B8 /* StationSelectionView.swift */; };
 		8B7A138A2BF89F23000CC4B8 /* LineModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A13892BF89F23000CC4B8 /* LineModels.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,9 @@
 		546FE2A72BF9022000F97F72 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		546FE2A92BF9023D00F97F72 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		546FE2AB2BF9025800F97F72 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		546FE2AD2BFA4C9000F97F72 /* DestinationSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectionView.swift; sourceTree = "<group>"; };
+		546FE2AF2BFA4E4E00F97F72 /* SelectionSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSplitView.swift; sourceTree = "<group>"; };
+		546FE2B22BFA87FD00F97F72 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		54FF2C5C2BEAB75B00786E2B /* Dm2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dm2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FF2C5F2BEAB75B00786E2B /* Dm2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dm2App.swift; sourceTree = "<group>"; };
 		54FF2C612BEAB75B00786E2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,7 +53,6 @@
 		8B7A13802BF2A156000CC4B8 /* Agrandir_Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Agrandir_Variable.ttf; sourceTree = "<group>"; };
 		8B7A13822BF2A1A0000CC4B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8B7A13832BF89E49000CC4B8 /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenView.swift; sourceTree = "<group>"; };
-		8B7A13852BF89E6B000CC4B8 /* LineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectionView.swift; sourceTree = "<group>"; };
 		8B7A13872BF89E82000CC4B8 /* StationSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectionView.swift; sourceTree = "<group>"; };
 		8B7A13892BF89F23000CC4B8 /* LineModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		546FE2B12BFA87EC00F97F72 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				546FE2B22BFA87FD00F97F72 /* CustomBackButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		54FF2C532BEAB75B00786E2B = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +120,12 @@
 		54FF2C6E2BED718500786E2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				546FE2B12BFA87EC00F97F72 /* Components */,
 				8B7A137A2BF29D7A000CC4B8 /* PathFindView.swift */,
 				8B7A13832BF89E49000CC4B8 /* WelcomeScreenView.swift */,
-				8B7A13852BF89E6B000CC4B8 /* LineSelectionView.swift */,
 				8B7A13872BF89E82000CC4B8 /* StationSelectionView.swift */,
+				546FE2AD2BFA4C9000F97F72 /* DestinationSelectionView.swift */,
+				546FE2AF2BFA4E4E00F97F72 /* SelectionSplitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,11 +239,13 @@
 				546FE2A42BF8F36F00F97F72 /* Station.swift in Sources */,
 				546FE2A82BF9022000F97F72 /* RouteManager.swift in Sources */,
 				546FE2AC2BF9025800F97F72 /* Waypoint.swift in Sources */,
+				546FE2B32BFA87FD00F97F72 /* CustomBackButton.swift in Sources */,
+				546FE2B02BFA4E4E00F97F72 /* SelectionSplitView.swift in Sources */,
 				54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */,
 				546FE2AA2BF9023D00F97F72 /* Route.swift in Sources */,
+				546FE2AE2BFA4C9000F97F72 /* DestinationSelectionView.swift in Sources */,
 				8B7A137B2BF29D7A000CC4B8 /* PathFindView.swift in Sources */,
 				8B7A13792BF29D5C000CC4B8 /* PathRepository.swift in Sources */,
-				8B7A13862BF89E6B000CC4B8 /* LineSelectionView.swift in Sources */,
 				8B7A13882BF89E82000CC4B8 /* StationSelectionView.swift in Sources */,
 				8B7A138A2BF89F23000CC4B8 /* LineModels.swift in Sources */,
 				54FF2C622BEAB75B00786E2B /* ContentView.swift in Sources */,
