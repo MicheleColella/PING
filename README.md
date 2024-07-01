@@ -1,41 +1,39 @@
-# Progetto di Orientamento Assistito per Stazioni
+# PING!
 
-Questo progetto è realizzato in collaborazione con l'ANM e l'Accademia delle Belle Arti. L'obiettivo è rivoluzionare il sistema LOGES nelle stazioni, offrendo un aiuto concreto a persone non vedenti, ipovedenti e a coloro che hanno difficoltà di orientamento. Il progetto utilizza sensori iBeacon per tracciare i movimenti nello spazio. Quando una persona deve prendere un treno specifico, il sistema si attiva per fornire indicazioni tramite vibrazioni e segnali visivi sul percorso da seguire. Inoltre, l'app è completamente compatibile con il VoiceOver di iOS.
+This project is carried out in collaboration with ANM and the Academy of Fine Arts. The goal is to revolutionize the LOGES system in stations, offering concrete assistance to blind, visually impaired, and orientation-challenged individuals. The project uses iBeacon sensors to track movements in space. When a person needs to catch a specific train, the system activates to provide guidance through vibrations and visual signals on the route to follow. Additionally, the app is fully compatible with iOS VoiceOver.
 
-Nel progetto, mi sono occupato specificamente della parte di back-end relativa al calcolo del percorso e della logica della schermata del percorso, inclusi la vibrazione in prossimità dei beacon e l'effetto grafico del pallino che si ingrandisce quando ci si avvicina.
+In the project, I specifically handled the back-end part related to route calculation and the logic of the route screen, including vibration near the beacons and the graphical effect of the dot enlarging as you approach.
 
-## Caratteristiche principali
+## Main Features
 
-- **Tracciamento con iBeacon:** Utilizzo di sensori iBeacon per tracciare i movimenti e fornire indicazioni precise.
-- **Compatibilità con VoiceOver:** L'app è completamente accessibile tramite VoiceOver di iOS.
-- **Feedback tramite Vibrazioni:** Il sistema fornisce indicazioni tramite vibrazioni per guidare l'utente.
-- **Segnali Visivi:** Effetti grafici che aiutano l'utente a orientarsi meglio nello spazio.
+- **iBeacon Tracking:** Utilizes iBeacon sensors to track movements and provide precise guidance.
+- **VoiceOver Compatibility:** The app is fully accessible through iOS VoiceOver.
+- **Vibration Feedback:** The system provides guidance through vibrations to assist the user.
+- **Visual Signals:** Graphical effects that help the user better orient themselves in space.
 
-## Immagini del progetto
+## Project Images
 
-### Schermata di Benvenuto
-<img src="IMG_0166.PNG" alt="Indicazioni di Direzione" width="200"/>
+### Welcome Screen
+<img src="IMG_0166.PNG" alt="Welcome Screen" width="200"/>
 
-### Indicazioni di Direzione
-<img src="IMG_0168.PNG" alt="Effetti Grafici 2" width="200"/>
-<img src="IMG_0167.PNG" alt="Schermata di Benvenuto" width="200"/>
+### Directional Guidance
+<img src="IMG_0168.PNG" alt="Directional Guidance" width="200"/>
+<img src="IMG_0167.PNG" alt="Welcome Screen" width="200"/>
 
-### Schermata del Percorso
-<img src="IMG_0171.PNG" alt="Effetti Grafici" width="200"/>
-<img src="IMG_0169.PNG" alt="Schermata del Percorso" width="200"/>
-<img src="IMG_0170.PNG" alt="Dettagli della Fermata" width="200"/>
+### Route Screen
+<img src="IMG_0171.PNG" alt="Route Screen" width="200"/>
+<img src="IMG_0169.PNG" alt="Route Screen Details" width="200"/>
+<img src="IMG_0170.PNG" alt="Stop Details" width="200"/>
 
+## How It Works
 
+1. **Route Configuration:**
+   - The user selects the desired destination, and the system calculates the optimal route.
+   - The route screen with precise guidance is displayed.
 
-## Come Funziona
+2. **Assisted Navigation:**
+   - During navigation, the user receives feedback through vibrations when approaching a beacon.
+   - The graphical effects show a dot that enlarges to indicate proximity to the beacon.
 
-1. **Configurazione del Percorso:**
-   - L'utente seleziona la destinazione desiderata e il sistema calcola il percorso ottimale.
-   - Viene visualizzata la schermata del percorso con indicazioni precise.
-
-2. **Navigazione Assistita:**
-   - Durante la navigazione, l'utente riceve feedback tramite vibrazioni quando si avvicina a un beacon.
-   - Gli effetti grafici mostrano un pallino che si ingrandisce per indicare la vicinanza al beacon.
-
-3. **Compatibilità con VoiceOver:**
-   - L'app funziona perfettamente con VoiceOver, fornendo descrizioni vocali per ogni indicazione.
+3. **VoiceOver Compatibility:**
+   - The app works perfectly with VoiceOver, providing voice descriptions for each guidance.
